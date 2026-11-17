@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>副驾位</title>
+<meta name="description" content="一个个人博客">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230F1412'/%3E%3Cpath d='M5 16h3l2-6 3 12 3-9 2 5 2-3h7' stroke='%23DFA463' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap">
+<style>
+:root{--ink:#0F1412;--paper:#E9E6DC;--muted:#9AA69F;--amber:#DFA463;--amber-dim:#B9854E;--line:rgba(233,230,220,.13);
+--serif:"Noto Serif SC",Songti SC,STSong,serif;--sans:"Noto Sans SC",PingFang SC,Microsoft YaHei,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--paper);font-family:var(--sans);font-weight:300;-webkit-font-smoothing:antialiased;line-height:1.75}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:940px;margin:0 auto;padding:0 28px}
+
+header{position:sticky;top:0;z-index:10;backdrop-filter:blur(14px);background:rgba(15,20,18,.82);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:18px;height:64px}
+.brand{font-family:var(--serif);font-weight:600;font-size:18px;letter-spacing:.04em;display:flex;align-items:center;gap:9px}
+.brand svg{width:18px;height:18px;flex:none}
+.nav-links{display:flex;gap:22px;font-size:14px;color:var(--muted);letter-spacing:.03em}
+.nav-links a{transition:color .18s;padding:4px 0;border-bottom:1px solid transparent}
+.nav-links a:hover,.nav-links a.on{color:var(--paper);border-bottom-color:var(--amber-dim)}
+
+.hero{padding:78px 0 54px}
+.hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(38px,6.4vw,68px);line-height:1.12;letter-spacing:-.01em}
+.hero .tag{margin-top:24px;max-width:34em;color:var(--muted);font-size:17px;line-height:1.95;white-space:pre-line}
+.meter{margin-top:44px;height:54px;width:100%;overflow:hidden}
+.meter svg{display:block;width:100%;height:54px}
+
+.list-head{display:flex;align-items:baseline;justify-content:space-between;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.list-head h2{font-family:var(--serif);font-weight:500;font-size:20px;letter-spacing:.06em}
+.list-head span{font-size:13px;color:var(--muted);letter-spacing:.08em}
+.posts{padding-bottom:90px}
+.row{display:grid;grid-template-columns:118px 1fr 74px;gap:24px;align-items:baseline;padding:26px 0;border-bottom:1px solid var(--line);transition:padding-left .2s ease}
+.row:hover{padding-left:8px}
+.row .date{font-size:13px;color:var(--muted);letter-spacing:.06em;font-variant-numeric:tabular-nums}
+.row h3{font-family:var(--serif);font-weight:600;font-size:23px;line-height:1.45;transition:color .2s}
+.row:hover h3{color:var(--amber)}
+.row .dek{margin-top:8px;font-size:14.5px;color:var(--muted);line-height:1.8}
+.row .cat{font-size:12.5px;color:var(--muted);letter-spacing:.1em;text-align:right}
+
+.article{padding:64px 0 96px;animation:fade .45s ease both}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.back{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;color:var(--muted);margin-bottom:36px;transition:color .2s}
+.back:hover{color:var(--amber)}
+.back svg{width:14px;height:14px}
+.article h1{font-family:var(--serif);font-weight:600;font-size:clamp(28px,4.4vw,42px);line-height:1.32;letter-spacing:-.01em}
+.ameta{margin-top:22px;padding-bottom:34px;border-bottom:1px solid var(--line);display:flex;gap:18px;font-size:13px;color:var(--muted);letter-spacing:.06em;flex-wrap:wrap}
+.body{max-width:38em;padding-top:38px;font-size:17px;line-height:1.95}
+.body p{margin-bottom:1.3em;color:#DDD9CE}
+.body h2{font-family:var(--serif);font-weight:600;font-size:23px;margin:2.2em 0 .9em;letter-spacing:.02em}
+.body blockquote{margin:1.4em 0;padding-left:22px;color:var(--amber);font-family:var(--serif);font-size:18px;line-height:1.9;border-left:2px solid rgba(223,164,99,.35)}
+.body ul{margin:1.2em 0 1.6em;padding-left:1.3em;color:#DDD9CE}
+.body li{margin-bottom:.6em}
+.body strong{font-weight:500;color:var(--paper)}
+.body figure{margin:1.8em 0}
+.body img{max-width:100%;height:auto;border-radius:3px;display:block}
+
+.about{padding:64px 0 100px;animation:fade .45s ease both;max-width:44em}
+.about h1{font-family:var(--serif);font-weight:600;font-size:clamp(26px,4vw,36px);line-height:1.4}
+.body .empty,.notice{color:var(--muted);font-size:14px;line-height:1.9}
+.notice{padding:22px 0}
+
+footer{border-top:1px solid var(--line);padding:34px 0 54px;color:var(--muted);font-size:13px;letter-spacing:.04em}
+.frow{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.frow a{color:var(--muted)}
+.frow a:hover{color:var(--amber)}
+
+@media (max-width:680px){
+  .wrap{padding:0 20px}
+  .hero{padding:52px 0 40px}
+  .meter{margin-top:32px;height:40px}
+  .row{grid-template-columns:1fr;gap:10px;padding:22px 0}
+  .row .date{order:-1}
+  .row .cat{text-align:left}
+  .nav-links{gap:16px;font-size:13px}
+  .body{font-size:16.5px;line-height:1.9}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#/" id="brand">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12h3l2-5 3 10 2.5-7 2 4.5 2-2.5h6" stroke="#DFA463" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      <span id="brandText">副驾位</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#/" data-nav="home">文章</a>
+      <a href="#/about" data-nav="about">关于</a>
+    </nav>
+  </div>
+</header>
+
+<main id="view"><div class="wrap notice">正在加载…</div></main>
+
+<footer>
+  <div class="wrap frow">
+    <span id="footL">一个安静的个人博客</span>
+    <span id="footR">托管于 Cloudflare Pages</span>
+  </div>
+</footer>
+
+<script>
+var SITE = { site_name:"副驾位", tagline:"", about:"", footer_note:"" };
+var CACHE = { posts:null };
+
+function esc(s){
+  return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+function inline(s){
+  var t = esc(s);
+  t = t.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+  t = t.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" loading="lazy">');
+  return t;
+}
+/* 轻量排版：空行分段，## 小标题，> 引用，- 列表，![图](地址) */
+function mdLite(src){
+  var lines = String(src||"").replace(/\r/g,"").split("\n");
+  var out=[], para=[], list=[];
+  function fp(){ if(para.length){ out.push("<p>"+inline(para.join(" "))+"</p>"); para=[]; } }
+  function fl(){ if(list.length){ out.push("<ul>"+list.map(function(x){return "<li>"+inline(x)+"</li>";}).join("")+"</ul>"); list=[]; } }
+  for(var i=0;i<lines.length;i++){
+    var ln = lines[i];
+    if(/^##\s+/.test(ln)){ fp(); fl(); out.push("<h2>"+inline(ln.replace(/^##\s+/,""))+"</h2>"); continue; }
+    if(/^>\s+/.test(ln)){ fp(); fl(); out.push("<blockquote>"+inline(ln.replace(/^>\s+/,""))+"</blockquote>"); continue; }
+    if(/^[-*]\s+/.test(ln)){ fp(); list.push(ln.replace(/^[-*]\s+/,"")); continue; }
+    if(/^!\[/.test(ln)){ fp(); fl(); out.push("<figure>"+inline(ln)+"</figure>"); continue; }
+    if(!ln.trim()){ fp(); fl(); continue; }
+    fl(); para.push(ln.trim());
+  }
+  fp(); fl();
+  return out.join("");
+}
+function fmtDate(iso){
+  if(!iso) return "";
+  var d = new Date(iso);
+  if(isNaN(d.getTime())) return String(iso).slice(0,10).replace(/-/g,".");
+  return d.getFullYear()+" 年 "+(d.getMonth()+1)+" 月 "+d.getDate()+" 日";
+}
+function shortDate(iso){
+  if(!iso) return "";
+  var d = new Date(iso);
+  if(isNaN(d.getTime())) return String(iso).slice(0,10).replace(/-/g,".");
+  var m = d.getMonth()+1, dd = d.getDate();
+  return d.getFullYear()+"."+(m<10?"0"+m:m)+"."+(dd<10?"0"+dd:dd);
+}
+function readTime(text){
+  var n = String(text||"").replace(/!\[[^\]]*\]\([^)]*\)/g,"").replace(/[#>*\-]/g,"").length;
+  return Math.max(1, Math.round(n/300))+" 分钟";
+}
+function api(path, opt){
+  return fetch(path, opt || {}).then(function(r){
+    return r.json().catch(function(){ return {}; }).then(function(j){
+      if(!r.ok) throw new Error(j.error || ("请求失败 "+r.status));
+      return j;
+    });
+  });
+}
+
+/* 频谱条 */
+var meterDrawn = false;
+function drawMeter(holder){
+  if(meterDrawn || !holder) return;
+  meterDrawn = true;
+  var W=940,H=54,n=96,bw=4,gap=(W-n*bw)/(n-1),parts=[];
+  for(var i=0;i<n;i++){
+    var t=i/(n-1);
+    var h=Math.min(48, 6+Math.abs(Math.sin(t*11.6))*22+Math.abs(Math.sin(t*3.1+1.2))*16+Math.abs(Math.sin(t*26.4))*7);
+    var x=i*(bw+gap), y=(H-h)/2;
+    parts.push('<rect x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+bw+'" height="'+h.toFixed(1)+'" rx="2" fill="#DFA463" opacity="'+(0.25+0.5*Math.abs(Math.sin(t*7.4))).toFixed(2)+'"/>');
+  }
+  holder.innerHTML='<svg viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="none" role="img" aria-label="音频频谱">'+parts.join("")+'</svg>';
+}
+
+function bootChrome(){
+  document.getElementById("brandText").textContent = SITE.site_name || "我的博客";
+  document.title = (SITE.site_name || "我的博客") + (SITE.tagline ? " · " + SITE.tagline.slice(0,40) : "");
+  document.getElementById("footL").textContent = SITE.footer_note || (SITE.site_name || "");
+  var b = document.getElementById("brand");
+  b.href = "#/";
+}
+
+/* ---------- 视图 ---------- */
+function viewHome(){
+  var v = document.getElementById("view");
+  var tagline = SITE.tagline ? SITE.tagline : "";
+  v.innerHTML = '<div class="wrap hero"><h1>'+esc(SITE.site_name||"我的博客")+'</h1>'
+    + (tagline ? '<p class="tag">'+esc(tagline)+'</p>' : "")
+    + '<div class="meter" id="meter"></div></div>'
+    + '<div class="wrap posts"><div class="list-head"><h2>全部文章</h2><span id="cnt">载入中</span></div><div id="rows"></div></div>';
+  drawMeter(document.getElementById("meter"));
+
+  var fill = function(posts){
+    var rows = posts.map(function(p){
+      return '<a class="row" href="#/post/'+p.id+'">'
+        + '<span class="date">'+shortDate(p.created_at)+'</span>'
+        + '<div><h3>'+esc(p.title)+'</h3>'+(p.dek?'<p class="dek">'+esc(p.dek)+'</p>':'')+'</div>'
+        + '<span class="cat">'+esc(p.cat||"")+'</span></a>';
+    }).join("");
+    document.getElementById("cnt").textContent = "共 "+posts.length+" 篇";
+    document.getElementById("rows").innerHTML = rows || '<p class="notice">还没有文章。登录 <a href="/admin/" style="color:var(--amber)">/admin</a> 写第一篇。</p>';
+  };
+
+  if(CACHE.posts){ fill(CACHE.posts); return; }
+  api("/api/posts").then(function(j){
+    CACHE.posts = j.posts || [];
+    fill(CACHE.posts);
+  }).catch(function(e){
+    document.getElementById("cnt").textContent = "读取失败";
+    document.getElementById("rows").innerHTML = '<div class="notice">无法连接到后端接口：'+esc(e.message)
+      + '<br>请确认已按说明绑定 D1 数据库（变量名 DB）。</div>';
+  });
+}
+
+function viewPost(id){
+  var v = document.getElementById("view");
+  v.innerHTML = '<div class="wrap article"><a class="back" href="#/"><svg viewBox="0 0 24 24" fill="none" stroke="#9AA69F" stroke-width="2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg>返回文章列表</a><h1>载入中…</h1></div>';
+  api("/api/posts?id="+encodeURIComponent(id)).then(function(j){
+    var p = j.post;
+    v.innerHTML = '<div class="wrap article">'
+      + '<a class="back" href="#/"><svg viewBox="0 0 24 24" fill="none" stroke="#9AA69F" stroke-width="2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg>返回文章列表</a>'
+      + '<h1>'+esc(p.title)+'</h1>'
+      + '<div class="ameta"><span>'+fmtDate(p.created_at)+'</span><span>'+readTime(p.body)+'</span>'+(p.cat?'<span>'+esc(p.cat)+'</span>':'')+'</div>'
+      + '<div class="body">'+(p.body?mdLite(p.body):'<p class="empty">（这篇还没有正文）</p>')+'</div>'
+      + '</div>';
+    document.title = p.title + " · " + (SITE.site_name||"");
+  }).catch(function(e){
+    v.innerHTML = '<div class="wrap article"><a class="back" href="#/">返回文章列表</a><h1>文章打不开</h1><div class="body"><p class="empty">'+esc(e.message)+'</p></div></div>';
+  });
+}
+
+function viewAbout(){
+  var v = document.getElementById("view");
+  v.innerHTML = '<div class="wrap about"><h1>关于这里</h1><div class="body">'
+    + (SITE.about ? mdLite(SITE.about) : '<p class="empty">还没有写介绍，登录 /admin 的「站点设置」里填。</p>')
+    + '</div></div>';
+}
+
+function setNav(k){
+  var ls = document.querySelectorAll("[data-nav]");
+  for(var i=0;i<ls.length;i++) ls[i].classList.toggle("on", ls[i].getAttribute("data-nav")===k);
+}
+
+function router(){
+  var h = location.hash.replace(/^#/,"");
+  if(h.indexOf("/post/")===0){ setNav("home"); viewPost(h.slice(6)); window.scrollTo(0,0); }
+  else if(h === "/about"){ setNav("about"); viewAbout(); window.scrollTo(0,0); }
+  else { setNav("home"); viewHome(); }
+}
+
+/* 先取站点设置，再渲染 */
+api("/api/settings").then(function(j){
+  if(j && j.settings){ for(var k in j.settings){ if(j.settings[k]) SITE[k] = j.settings[k]; } }
+}).catch(function(){}).then(function(){
+  bootChrome();
+  window.addEventListener("hashchange", router);
+  router();
+});
+</script>
+</body>
+</html>
